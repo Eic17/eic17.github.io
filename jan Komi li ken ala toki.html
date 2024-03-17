@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tok">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div{
+            margin: auto;
+            width: 100%;
+        }
+        #lipu{
+            margin: 10px auto;
+            height: 100%;
+            width: 100%;
+        }
+        #nimiSuli{
+            margin: 10px auto;
+            height: 50%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body style="background-color: #2B2A33;">
+    <div style="width: 100%; margin: auto">
+        <img src="./ijo majuna/jklkat poka.png" alt="" id="nimiSuli">
+    </div>
+    <div id="div">
+        <img id="lipu" onclick="lipuKama()" onerror="lipuPini()">
+    </div>
+    <script>
+        let path = "./! nanpa pini/lipu nanpa 1/lipu/jan Komi "
+        let muteToki = 5
+        let muteLipu = [8, 6, 3, 7, 8]
+        let lipu = document.getElementById("lipu")
+        lipu.src = path + "1-1.jpg"
+        let i=1, j=1
+        function lipuKama(){
+            if(1+!(i==muteToki && j==muteLipu[muteToki-1])){
+                if(j==muteLipu[i-1]){
+                    i++
+                    j=1
+                }else{
+                    j++
+                }
+                lipu.src = path + i + '-' + j + ".jpg"
+            }
+        }
+        function lipuPini(){
+            if(!(i==1 && j==1)){
+                if(j>1){
+                    j--
+                }else{
+                    i--
+                    j=muteLipu[i-1]
+                }
+                lipu.src = path + i + '-' + j + ".jpg"
+            }
+        }
+        document.addEventListener('keydown', function(event) {
+            if(event.keyCode == 37) {
+                lipuPini();
+            }
+            else if(event.keyCode == 39) {
+                lipuKama();
+            }
+        });
+    </script>
+</body>
+</html>
